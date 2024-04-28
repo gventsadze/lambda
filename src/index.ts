@@ -11,7 +11,8 @@ export const handler: Handler = async (event: any, context: Context) => {
         return {
             statusCode: 200,
             body: JSON.stringify({
-                message: 'AWS Lambda function is executed successfully!',
+                app_name: process.env.APP_NAME,
+                message: 'AWS Lambda AFTER ENV function is executed successfully! ' + process.env.APP_NAME,
                 timestamp: new Date().toISOString(),
             }),
         };
