@@ -1,6 +1,7 @@
 import { APIGatewayProxyHandler, Context } from 'aws-lambda';
 
 import { MainService } from './app/main.service';
+import { HttpStatus } from './app/common/http-status.enum';
 
 export const handler: APIGatewayProxyHandler = async (event: any, context: Context) => {
     try {
@@ -20,7 +21,7 @@ export const handler: APIGatewayProxyHandler = async (event: any, context: Conte
         console.error('Error in handler:', error);
 
         return {
-            statusCode: 500,
+            statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
             body: JSON.stringify({
                 message: 'Internal Server Error',
                 event,

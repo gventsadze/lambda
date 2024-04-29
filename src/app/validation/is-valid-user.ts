@@ -1,8 +1,8 @@
 import { isEmail, isNumber, isString, stringToNumber } from '../common/type.helper';
-import { ValidationResponse } from '../common/ValidationResponse';
+import { ValidationHandler } from '../common/validation-handler';
 import { ValidationInterface } from '../common/interfaces/validation.interface';
 
-export class IsValidUser extends ValidationResponse {
+export class IsValidUser extends ValidationHandler {
     public checkAndTransform(obj: any): ValidationInterface {
         const validName: boolean = isString(obj.name);
         const validEmail: boolean = isEmail(obj.email);
