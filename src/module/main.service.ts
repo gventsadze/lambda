@@ -23,7 +23,7 @@ export class MainService {
                     queryParams: this.queryParams,
                     httpMethod: this.httpMethod,
                     class_name: this.constructor.name,
-                    message: 'AWS Lambda v2 AFTER ENV function is executed successfully! ' + process.env.APP_NAME,
+                    message: 'AWS Lambda v3 AFTER ENV function is executed successfully! ' + process.env.APP_NAME,
                     timestamp: new Date().toISOString(),
                 }),
             };

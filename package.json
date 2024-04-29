@@ -7,10 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"**/*.ts\" --fix",
+    "remove-build": "rm -rf build && rm -f build.zip",
     "build-code": "npx tsc",
     "zip": "zip -r build.zip build/**",
     "copy-modules-for-lambda": "node copy-modules-for-lambda.js",
-    "build": "npm run build-code && npm run copy-modules-for-lambda && npm run zip"
+    "build": "npm run remove-build && npm run build-code && npm run copy-modules-for-lambda && npm run zip"
   },
   "keywords": [],
   "author": "",
@@ -32,8 +33,6 @@
     "typescript": "^5.4.5"
   },
   "lambdaDependencies": [
-    "aws-sdk",
-    "fs-extra",
     "mongoose"
   ]
 }
