@@ -9,7 +9,7 @@
     "lint": "eslint \"**/*.ts\" --fix",
     "remove-build": "rm -rf build && rm -f build.zip",
     "build-code": "npx tsc",
-    "zip": "zip -r build.zip build/**",
+    "zip": "cd build && zip -r ../build.zip .",
     "copy-modules-for-lambda": "node copy-modules-for-lambda.js",
     "build": "npm run remove-build && npm run build-code && npm run copy-modules-for-lambda && npm run zip"
   },

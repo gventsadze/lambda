@@ -1,6 +1,6 @@
 import { APIGatewayProxyHandler, Context } from 'aws-lambda';
 
-import { MainService } from './module/main.service';
+import { MainService } from './app/main.service';
 
 export const handler: APIGatewayProxyHandler = async (event: any, context: Context) => {
     try {

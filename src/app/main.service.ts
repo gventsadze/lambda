@@ -1,4 +1,5 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
+import mongoose from 'mongoose';
 
 import { IsValidUser } from './validation/is-valid-user';
 import { ValidationInterface } from './common/interfaces/validation.interface';
