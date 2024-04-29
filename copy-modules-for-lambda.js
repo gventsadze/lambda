@@ -2,11 +2,11 @@
 
 const fs = require('fs-extra');
 
-// Whitelist of dependencies to include in node_modules
-const copyModulesForLambda = ['aws-sdk', 'mongoose'];
-
 // Read package.json file
 const packageJson = require('./package.json');
+
+// Whitelist of dependencies to include in node_modules
+const copyModulesForLambda = packageJson.lambdaDependencies || [];
 
 // Filter dependencies based on copyModulesForLambda
 const dependenciesToInclude = {};

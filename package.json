@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"**/*.ts\" --fix",
-    "build": "npx tsc",
+    "build-code": "npx tsc",
     "zip": "zip -r build.zip build/**",
     "copy-modules-for-lambda": "node copy-modules-for-lambda.js",
-    "get-ready": "npm run build && npm run copy-modules-for-lambda && npm run zip"
+    "build": "npm run build-code && npm run copy-modules-for-lambda && npm run zip"
   },
   "keywords": [],
   "author": "",
@@ -30,5 +30,10 @@
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.0.3",
     "typescript": "^5.4.5"
-  }
+  },
+  "lambdaDependencies": [
+    "aws-sdk",
+    "fs-extra",
+    "mongoose"
+  ]
 }
