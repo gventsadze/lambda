@@ -8,14 +8,17 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"**/*.ts\" --fix",
     "build": "npx tsc",
-    "zip": "cd build && zip -r ../build.zip .",
-    "get-ready": "npm run build && npm run zip"
+    "zip": "zip -r build.zip build/**",
+    "copy-modules-for-lambda": "node copy-modules-for-lambda.js",
+    "get-ready": "npm run build && npm run copy-modules-for-lambda && npm run zip"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1608.0"
+    "aws-sdk": "^2.1608.0",
+    "fs-extra": "^11.2.0",
+    "mongoose": "^8.3.2"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.137",

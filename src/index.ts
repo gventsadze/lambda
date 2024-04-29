@@ -1,23 +1,21 @@
-import { Context, Handler } from 'aws-lambda';
+import { APIGatewayProxyHandler, Context } from 'aws-lambda';
 
-import { logger } from './modules/logger';
+import { MainService } from './module/main.service';
 
-export const handler: Handler = async (event: any, context: Context) => {
+export const handler: APIGatewayProxyHandler = async (event: any, context: Context) => {
     try {
-        console.log('AWS Lambda function is executing...');
+        // Access the payload data (assuming it's JSON)
+        const requestBody: Record<string, any> = JSON.parse(event.body || '{}');
 
-        logger();
+        // Access specific query parameters
+        const queryParams: Record<string, any> = event.queryStringParameters || {};
 
-        return {
-            statusCode: 200,
-            body: JSON.stringify({
-                app_name: process.env.APP_NAME,
-                message: 'AWS Lambda AFTER ENV function is executed successfully! ' + process.env.APP_NAME,
-                timestamp: new Date().toISOString(),
-            }),
-        };
+        // Detect HTTP method
+        const httpMethod: string = event.httpMethod;
 
-        // Your Lambda function logic here
+        const mainService: MainService = new MainService(requestBody, queryParams, httpMethod);
+
+        return await mainService.execute();
     } catch (error) {
         console.error('Error in handler:', error);
 
